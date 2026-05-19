@@ -1,117 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bus Station | Smart Routing App</title>
-    <link rel="preconnect" href="https://unpkg.com">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bus Station</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
 </head>
 <body>
+
 <section class="hero">
-    <nav class="navbar" aria-label="Main navigation">
-        <a class="logo" href="#" aria-label="Bus Station home">
-            <img src="./images/bus-station-logo.jpg" alt="Bus Station Logo">
-        </a>
 
-        <ul class="nav-links">
-            <li><a class="active" href="#">Home</a></li>
-            <li><a href="#features">Services</a></li>
-            <li><a href="#route-planner">Schedules</a></li>
-            <li><a href="#results-area">Tickets</a></li>
-            <li><a href="#support">Contact Us</a></li>
-        </ul>
-    </nav>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/bus-station-logo.jpg" alt="Bus Station Logo" />
+    </div>
 
-    <main class="hero-grid">
-        <div class="left-panel">
-            <div class="content">
-                <p class="eyebrow">Smart travel planning</p>
-                <h1>Find your best bus route in seconds.</h1>
-                <p>Enter two cities, see the route on the map, and get distance, estimated time, and ticket price.</p>
-            </div>
+    <ul class="nav-links">
+      <li class="active">Home</li>
+      <li>About Us</li>
+      <li>Schedules</li>
+      <li>Tickets</li>
+      <li>Services</li>
+      <li>Contact Us</li>
+    </ul>
 
-            <form class="search-box" id="route-form">
-                <div class="field">
-                    <label for="from-input">From</label>
-                    <input id="from-input" type="text" placeholder="e.g. Skopje" autocomplete="off" required>
-                </div>
+    <button class="account">My Account</button>
+  </nav>
 
-                <div class="field">
-                    <label for="to-input">To</label>
-                    <input id="to-input" type="text" placeholder="e.g. Ohrid" autocomplete="off" required>
-                </div>
+  <div class="hero-grid">
 
-                <div class="field">
-                    <label for="date-input">Date</label>
-                    <input id="date-input" type="date">
-                </div>
+    <div class="left-content">
+      <h1>Find Your Best Bus Route</h1>
+      <p>Search routes, check schedules, and book your ticket easily.</p>
 
-                <button id="search-button" type="submit">Search Buses</button>
-            </form>
-
-            <div class="features" id="features">
-                <article>
-                    <img class="feature-icon" src="./images/real-time-schedules.jpg" alt="Real-time schedules">
-                    <h3>Real-time<br>Schedules</h3>
-                </article>
-
-                <article>
-                    <img class="feature-icon" src="./images/easy-booking.jpg" alt="Easy booking">
-                    <h3>Easy<br>Booking</h3>
-                </article>
-
-                <article>
-                    <img class="feature-icon" src="./images/safe-and-reliable.jpg" alt="Safe and reliable service">
-                    <h3>Safe &<br>Reliable</h3>
-                </article>
-            </div>
+      <div class="search-box">
+        <div class="field">
+          <label>From</label>
+          <input id="from-input" type="text" placeholder="Skopje" />
         </div>
 
-        <div class="right-panel" id="route-planner">
-            <div class="map-box">
-                <div id="map" aria-label="Route map"></div>
-
-                <div id="map-loader-overlay" class="hidden-loader">
-                    <div class="loader"></div>
-                    <p>Loading route...</p>
-                </div>
-            </div>
-
-            <div id="results-area" class="results-card">
-                <h2>Route details</h2>
-                <p>Search for a trip to see distance, travel time, and estimated ticket price.</p>
-            </div>
+        <div class="field">
+          <label>To</label>
+          <input id="to-input" type="text" placeholder="Ohrid" />
         </div>
-    </main>
 
-    <section class="bottom-card" id="support">
-        <article class="info">
-            <img class="bottom-icon" src="./images/wide-network.jpg" alt="Wide network">
-            <div>
-                <h3>Wide Network</h3>
-                <p>Connecting you to more places, every day.</p>
-            </div>
-        </article>
+        <div class="field">
+          <label>Date</label>
+          <input id="date-input" type="date" />
+        </div>
 
-        <article class="info">
-            <img class="bottom-icon" src="./images/customer-support.jpg" alt="Customer support">
-            <div>
-                <h3>Customer Support</h3>
-                <p>We are here to help you 24/7.</p>
-            </div>
-        </article>
+        <button onclick="searchTrip()">Search Buses</button>
+      </div>
 
-        <article class="info">
-            <img class="bottom-icon" src="./images/mobile-friendly.jpg" alt="Mobile friendly app">
-            <div>
-                <h3>Mobile Friendly</h3>
-                <p>Book tickets and check updates on the go.</p>
-            </div>
-        </article>
-    </section>
+      <div class="features">
+        <div>
+          <img class="feature-icon" src="images/real-time-schedules.jpg" alt="Real-time schedules" />
+          <h3>Real-time<br />Schedules</h3>
+        </div>
+
+        <div>
+          <img class="feature-icon" src="images/easy-booking.jpg" alt="Easy booking" />
+          <h3>Easy<br />Booking</h3>
+        </div>
+
+        <div>
+          <img class="feature-icon" src="images/safe-and-reliable.jpg" alt="Safe and reliable" />
+          <h3>Safe &<br />Reliable</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-content">
+      <div class="map-box">
+        <div id="map"></div>
+
+        <div id="map-loader-overlay" class="hidden-loader">
+          <div class="loader"></div>
+          <p>Loading route...</p>
+        </div>
+      </div>
+
+      <div id="results-area"></div>
+    </div>
+
+  </div>
+
+  <div class="bottom-card">
+    <div class="info">
+      <img class="bottom-icon" src="images/wide-network.jpg" alt="Wide network" />
+      <div>
+        <h3>Wide Network</h3>
+        <p>Connecting you to more places, every day.</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <img class="bottom-icon" src="images/customer-support.jpg" alt="Customer support" />
+      <div>
+        <h3>Customer Support</h3>
+        <p>We’re here to help you 24/7.</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <img class="bottom-icon" src="images/mobile-friendly.jpg" alt="Mobile friendly" />
+      <div>
+        <h3>Mobile Friendly</h3>
+        <p>Book tickets and check updates on the go.</p>
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
