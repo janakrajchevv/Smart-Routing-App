@@ -1,114 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bus Station</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Bus Station | Smart Routing App</title>
+    <link rel="preconnect" href="https://unpkg.com">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <section class="hero">
-
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">
+    <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="#" aria-label="Bus Station home">
             <img src="./images/bus-station-logo.jpg" alt="Bus Station Logo">
-        </div>
+        </a>
 
         <ul class="nav-links">
-            <li class="active">Home</li>
-            <li>About Us</li>
-            <li>Schedules</li>
-            <li>Tickets</li>
-            <li>Services</li>
-            <li>Contact Us</li>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="#features">Services</a></li>
+            <li><a href="#route-planner">Schedules</a></li>
+            <li><a href="#results-area">Tickets</a></li>
+            <li><a href="#support">Contact Us</a></li>
         </ul>
-
-        <button class="account">My Account</button>
     </nav>
 
-    <!-- CONTENT -->
-    <div class="search-box">
-        <div class="field">
-            <label>From</label>
-            <input id="from-input" type="text" placeholder="Select location">
-        </div>
-
-        <div class="field">
-            <label>To</label>
-            <input id="to-input" type="text" placeholder="Select location">
-        </div>
-
-        <div class="field">
-            <label>Date</label>
-            <input id="date-input" type="date">
-        </div>
-
-        <button onclick="searchTrip()">Search Buses</button>
-    </div>
-
-        <!-- FEATURES -->
-        <div class="features">
-
-            <div>
-                <img class="feature-icon" src="./images/real-time-schedules.jpg" alt="">
-                <h3>Real-time<br>Schedules</h3>
+    <main class="hero-grid">
+        <div class="left-panel">
+            <div class="content">
+                <p class="eyebrow">Smart travel planning</p>
+                <h1>Find your best bus route in seconds.</h1>
+                <p>Enter two cities, see the route on the map, and get distance, estimated time, and ticket price.</p>
             </div>
 
-            <div>
-                <img class="feature-icon" src="./images/easy-booking.jpg" alt="">
-                <h3>Easy<br>Booking</h3>
-            </div>
+            <form class="search-box" id="route-form">
+                <div class="field">
+                    <label for="from-input">From</label>
+                    <input id="from-input" type="text" placeholder="e.g. Skopje" autocomplete="off" required>
+                </div>
 
-            <div>
-                <img class="feature-icon" src="./images/safe-and-reliable.jpg" alt="">
-                <h3>Safe &<br>Reliable</h3>
-            </div>
+                <div class="field">
+                    <label for="to-input">To</label>
+                    <input id="to-input" type="text" placeholder="e.g. Ohrid" autocomplete="off" required>
+                </div>
 
+                <div class="field">
+                    <label for="date-input">Date</label>
+                    <input id="date-input" type="date">
+                </div>
+
+                <button id="search-button" type="submit">Search Buses</button>
+            </form>
+
+            <div class="features" id="features">
+                <article>
+                    <img class="feature-icon" src="./images/real-time-schedules.jpg" alt="Real-time schedules">
+                    <h3>Real-time<br>Schedules</h3>
+                </article>
+
+                <article>
+                    <img class="feature-icon" src="./images/easy-booking.jpg" alt="Easy booking">
+                    <h3>Easy<br>Booking</h3>
+                </article>
+
+                <article>
+                    <img class="feature-icon" src="./images/safe-and-reliable.jpg" alt="Safe and reliable service">
+                    <h3>Safe &<br>Reliable</h3>
+                </article>
+            </div>
         </div>
-    </div>
 
-    <!-- BOTTOM CARD -->
-    <div class="bottom-card">
+        <div class="right-panel" id="route-planner">
+            <div class="map-box">
+                <div id="map" aria-label="Route map"></div>
 
-        <div class="info">
-            <img class="bottom-icon" src="./images/wide-network.jpg" alt="">
+                <div id="map-loader-overlay" class="hidden-loader">
+                    <div class="loader"></div>
+                    <p>Loading route...</p>
+                </div>
+            </div>
+
+            <div id="results-area" class="results-card">
+                <h2>Route details</h2>
+                <p>Search for a trip to see distance, travel time, and estimated ticket price.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="bottom-card" id="support">
+        <article class="info">
+            <img class="bottom-icon" src="./images/wide-network.jpg" alt="Wide network">
             <div>
                 <h3>Wide Network</h3>
-                <p>Connecting you to more<br>places, every day.</p>
+                <p>Connecting you to more places, every day.</p>
             </div>
-        </div>
+        </article>
 
-        <div class="info">
-            <img class="bottom-icon" src="./images/customer-support.jpg" alt="">
+        <article class="info">
+            <img class="bottom-icon" src="./images/customer-support.jpg" alt="Customer support">
             <div>
                 <h3>Customer Support</h3>
-                <p>We’re here to help you<br>24/7.</p>
+                <p>We are here to help you 24/7.</p>
             </div>
-        </div>
+        </article>
 
-        <div class="info">
-            <img class="bottom-icon" src="./images/mobile-friendly.jpg" alt="">
+        <article class="info">
+            <img class="bottom-icon" src="./images/mobile-friendly.jpg" alt="Mobile friendly app">
             <div>
                 <h3>Mobile Friendly</h3>
-                <p>Book tickets and check updates<br>on the go.</p>
+                <p>Book tickets and check updates on the go.</p>
             </div>
-        </div>
-
-    </div>
-    <div class="map-box">
-        <div id="map"></div>
-
-        <div id="map-loader-overlay" class="hidden-loader">
-            <div class="loader"></div>
-            <p>Loading route...</p>
-        </div>
-    </div>
-
-    <div id="results-area"></div>
+        </article>
+    </section>
 </section>
+
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="script.js"></script>
 </body>
