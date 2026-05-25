@@ -6,7 +6,7 @@
 }
 
 body {
-  min-height: 1280px;
+  max-height: 800px;
   overflow-x: hidden;
 }
 
@@ -72,7 +72,7 @@ body {
   grid-template-columns: 1fr 520px;
   gap: 45px;
   align-items: start;
-  margin-top: 90px;
+  margin-top: 20px;
 }
 
 .left-content h1 {
@@ -137,9 +137,9 @@ body {
 }
 
 .features {
-  margin-top: 40px;
+  margin-top: 15px;
   display: flex;
-  gap: 50px;
+  gap: 137px;
   color: white;
   flex-wrap: wrap;
 }
@@ -235,12 +235,12 @@ body {
 }
 
 .bottom-card {
-  margin-top: 55px;
+  margin-top: 10px;
   width: 100%;
   background: #002d63;
   color: white;
   border-radius: 14px;
-  padding: 30px 35px;
+  padding: 20px 35px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
