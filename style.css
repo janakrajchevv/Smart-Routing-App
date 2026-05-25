@@ -90,7 +90,7 @@ body {
   grid-template-columns: minmax(0, 1fr) 520px;
   gap: 45px;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .left-content h1 {
@@ -165,9 +165,9 @@ body {
 }
 
 .features {
-  margin-top: 35px;
+  margin-top: 20px;
   display: flex;
-  gap: 70px;
+  gap: 137px;
   color: white;
   flex-wrap: wrap;
 }
@@ -267,7 +267,7 @@ body {
 }
 
 .bottom-card {
-  margin-top: 25px;
+  margin-top: 20px;
   width: 100%;
   background: #002d63;
   color: white;
